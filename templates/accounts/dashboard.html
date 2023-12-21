@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+{% include 'includes/navbar.html' %}
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content">
+  <div class="container">
+    {% include 'includes/dashitem.html' %}  
+    <div class="card mx-auto" style="max-width: 600px;border: none;margin-bottom: 40px;">
+      <div class="row justify-content-center align-items-center h-100">
+        <div class="card col-md-12">
+          <div class="card-body text-center">
+            <img src="{% if userprofile.profile_picture %}{{userprofile.profile_picture.url}}{% endif %}"
+            alt="Profile Picture" class="img-fluid rounded-circle border border-dark border-3" style="width: 70px;"><br>
+            <strong class="d-inline-block">{{user.first_name}} {{user.last_name}}</strong><br>
+            <span class="badge badge-success rounded-pill d-inline">{{user.email}}</span>
+            <br>
+            <a class="btn btn-outline-dark mt-3" href="{% url 'editProfile' %}"><i class="fa fa-pencil"
+                aria-hidden="true"> Edit</i></a>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title">Total Orders</h5>
+            <p class="card-text">{{orders_count}}</p>
+            <a href="{% url 'myOrders' %}" class="btn btn-outline-dark">View Orders</a><br>
+            <a class="btn btn-outline-danger mt-2" href="{% url 'logout' %}"> <i class="fa fa-power-off"></i> <span
+                class="text">Log out</span> </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+{% endblock content %}
