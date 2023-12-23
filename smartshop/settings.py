@@ -161,7 +161,7 @@ ANYMAIL = {
     "DEBUG_API_REQUESTS": DEBUG,
 }
 # EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_HOST_USER = "haamrodookan@gmail.com"
+# EMAIL_HOST_USER = "shopsmart@gmail.com"
 # EMAIL_HOST_PASSWORD = "bgxsgtbwfihnhydr"
 # # EMAIL_HOST_PASSWORD = "tjpsvkutssguytyw"
 # EMAIL_PORT = 587

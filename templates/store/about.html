@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    {% include 'includes/navbar.html' %}
+
+    <body>
+
+    <!-- ========================= SECTION MAIN ========================= -->
+    <section class="section-intro padding-y">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner" style="height: 550px;">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="{% static 'images/banners/2.jpg' %}" alt="First slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="{% static 'images/banners/3.jpg' %}" alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="{% static 'images/banners/1.jpg' %}" alt="Third slide">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================= SECTION MAIN END// ========================= -->
+
+
+    <!-- Comapny Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 wow fadeInUp conheight" data-wow-delay="0.1s">
+                    <div class="team-item rounded overflow-hidden">
+                        <div class="d-flex">
+                            <img class="img-fluid w-100" src="{% static 'images/banners/shop1.jpg' %}" alt="">
+                        </div>
+                        <div class="p-4 forheight">
+                            <h5 class="font" style="text-align: center;">Our Company</h5>
+                            <div class="text"><var> Shop Smart provides synonymous with quality, and we ensure a
+                                continuous variety of fantastic merchandise that fit any budget. Check it out and start
+                                shopping today.</var></div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp conheight" data-wow-delay="0.3s">
+                    <div class="team-item rounded overflow-hidden">
+                        <div class="d-flex">
+                            <img class="img-fluid w-100" src="{% static 'images/banners/shop2.jpg' %}" alt="">
+                        </div>
+                        <div class="p-4 forheight">
+                            <h5 class="font" style="text-align: center;">Our Mission</h5>
+                            <div class="text">We nourish communities by connecting communities and sustainable farms
+                                together through a transparent food system. By making it convenient for people to eat
+                                better, visit local farms and help those battling hunger, we are transforming the food
+                                system.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp conheight" data-wow-delay="0.5s">
+                    <div class="team-item rounded overflow-hidden">
+                        <div class="d-flex">
+                            <img class="img-fluid w-100" src="{% static 'images/banners/shop3.jpg' %}" alt="">
+                        </div>
+                        <div class="p-4 forheight">
+                            <h5 class="font" style="text-align: center;">Our Vision</h5>
+                            <div class="text">Our organic farmers market booth because if we took the care and
+                                responsibility to feed and give back to the land, we could be trusted with feeding her
+                                family and nourishing our community.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Company End -->
+    <h1 class="text-center">Our Service</h1>
+    <!-- Service Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 wow fadeInUp conheight" data-wow-delay="0.1s">
+                    <div class="team-item rounded overflow-hidden">
+                        <div class="d-flex">
+                            <img class="img-fluid w-100" src="{% static 'images/banners/shop1.jpg' %}" alt="">
+                        </div>
+                        <div class="p-4 forheight">
+                            <h5 class="font" style="text-align: center;">Our Company</h5>
+                            <div class="text"><var> Shop Smart provides synonymous with quality, and we ensure a
+                                continuous variety of fantastic merchandise that fit any budget. Check it out and start
+                                shopping today.</var></div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp conheight" data-wow-delay="0.3s">
+                    <div class="team-item rounded overflow-hidden">
+                        <div class="d-flex">
+                            <img class="img-fluid w-100" src="{% static 'images/banners/shop2.jpg' %}" alt="">
+                        </div>
+                        <div class="p-4 forheight">
+                            <h5 class="font" style="text-align: center;">Our Mission</h5>
+                            <div class="text">We nourish communities by connecting communities and sustainable farms
+                                together through a transparent food system. By making it convenient for people to eat
+                                better, visit local farms and help those battling hunger, we are transforming the food
+                                system.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp conheight" data-wow-delay="0.5s">
+                    <div class="team-item rounded overflow-hidden">
+                        <div class="d-flex">
+                            <img class="img-fluid w-100" src="{% static 'images/banners/shop3.jpg' %}" alt="">
+                        </div>
+                        <div class="p-4 forheight">
+                            <h5 class="font" style="text-align: center;">Our Vision</h5>
+                            <div class="text">Our organic farmers market booth because if we took the care and
+                                responsibility to feed and give back to the land, we could be trusted with feeding her
+                                family and nourishing our community.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
+
+
+    </body>
+
+    </html>
+{% endblock content %}

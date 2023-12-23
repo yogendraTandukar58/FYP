@@ -1,107 +1,117 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block content  %}
+{% block content %}
     <section class="section-content padding-y bg">
         <div class="container">
-        <!-- ============================ COMPONENT 1 ================================= -->
-                <div class="row">
-                    <aside class="col-lg-9">
+            <!-- ============================ COMPONENT 1 ================================= -->
+            <div class="row">
+                <aside class="col-lg-9">
+                    <div class="card">
                         <div class="card">
-                            <div class="card">
-                                <h5 class="card-header">Billing Address</h5>
-                                <div class="card-body">
-                                  <p class="card-text">{{order.full_name}}</p>
-                                  <p class="card-text">{{order.state}}</p>
-                                  <p class="card-text">{{order.area}}</p>
-                                  <p class="card-text">{{order.address}}</p>
-                                </div>
+                            <h5 class="card-header">Billing Address</h5>
+                            <div class="card-body">
+                                <p class="card-text">{{ order.full_name }}</p>
+                                <p class="card-text">{{ order.state }}</p>
+                                <p class="card-text">{{ order.area }}</p>
+                                <p class="card-text">{{ order.address }}</p>
                             </div>
-                        </div> <!-- card.// -->
+                        </div>
+                    </div> <!-- card.// -->
+                    <div class="card">
                         <div class="card">
-                            <div class="card">
-                                <h5 class="card-header">Payment method</h5>
-                                <div class="card-body">
-                                  <p class="btn btn-success ">Khalti</p>
-                                </div>
+                            <h5 class="card-header">Payment method</h5>
+                            <div class="card-body">
+                                <p class="btn" style="background-color:purple;color: white;">Khalti</p>
+{#                                <p class="btn btn-success ">Cash In hand</p>#}
                             </div>
-                        </div> <!-- card.// -->
+                        </div>
+                    </div> <!-- card.// -->
+                    <div class="card">
                         <div class="card">
-                            <div class="card">
-                                <h5 class="card-header">Review Products</h5>
-                                <div class="card-body">
-                                    <table class="table table-borderless table-shopping-cart">
-                                        <thead class="text-muted">
-                                            <tr class="small text-uppercase">
-                                                <th scope="col">Product</th>
-                                                <th scope="col">Quantity</th>
-                                                <th scope="col">Price</th>
-                                            </tr>
-                                        </thead>
-                                        <td>
-                                            {% for cart_item in cart_items %}
-                                        <tr>
-                                            <td>
-                                                <figure class="itemside align-items-center">
-                                                    <div class="aside"><img src="{{ cart_item.product.Image.url }}" class="img-sm"></div>
+                            <h5 class="card-header">Review Products</h5>
+                            <div class="card-body">
+                                <table class="table table-borderless table-shopping-cart">
+                                    <thead class="text-muted">
+                                    <tr class="small text-uppercase">
+                                        <th scope="col">Product</th>
+                                        <th scope="col">Quantity</th>
+                                        <th scope="col">Price</th>
+                                    </tr>
+                                    </thead>
+                                    <td>
+                                        {% for cart_item in cart_items %}
+                                            <tr>
+                                                <td>
+                                                    <figure class="itemside align-items-center">
+                                                        <div class="aside"><img src="{{ cart_item.product.Image.url }}"
+                                                                                class="img-sm"></div>
                                                         <figcaption class="info">
-                                                            <a href="{{ cart_item.product.get_url }}" class="title text-dark">{{ cart_item.product.product_name }}</a>
+                                                            <a href="{{ cart_item.product.get_url }}"
+                                                               class="title text-dark">{{ cart_item.product.product_name }}</a>
                                                             <!--  -->
                                                             {% if cart_item.variation.all %}
                                                                 {% for items in cart_item.variation.all %}
-                                                                    <p class="text-muted small">{{ items.variation_category | capfirst }}: {{ items.variation_value | capfirst }} <br> </p>
+                                                                    <p class="text-muted small">{{ items.variation_category | capfirst }}: {{ items.variation_value | capfirst }}
+                                                                        <br></p>
                                                                 {% endfor %}
                                                             {% endif %}
                                                         </figcaption>
-                                                </figure>
-                                            </td>
+                                                    </figure>
+                                                </td>
                                                 <td>
                                                     <!-- col.// -->
-                                                                <div class="col"> 
-                                                                    <p>{{cart_item.quantity}}</p>
-                                                                </div> <!-- col.// -->
+                                                    <div class="col">
+                                                        <p>{{ cart_item.quantity }}</p>
+                                                    </div> <!-- col.// -->
                                                 </td>
-                                                <td> 
-                                                    <div class="price-wrap"> 
+                                                <td>
+                                                    <div class="price-wrap">
                                                         <var class="price">Rs. {{ cart_item.sub_total }}</var>
                                                     </div> <!-- price-wrap .// -->
                                                 </td>
-                                        </tr>
-                                    {% endfor %}
-                                        </td>
-                                    </table><hr>
-                                </div>
+                                            </tr>
+                                        {% endfor %}
+                                    </td>
+                                </table>
+                                <hr>
                             </div>
-                        </div> <!-- card.// -->
-                    </aside> <!-- col.// -->
-                        <aside class="col-lg-3">
-                            <div class="card">
-                            <div class="card-body">
-                                <dl class="dlist-align">
+                        </div>
+                    </div> <!-- card.// -->
+                </aside> <!-- col.// -->
+                <aside class="col-lg-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <dl class="dlist-align">
                                 <dt>Total price:</dt>
                                 <dd class="text-right">{{ total }}</dd>
-                                </dl>
-                                <dl class="dlist-align">
+                            </dl>
+                            <dl class="dlist-align">
                                 <dt>Tax:</dt>
                                 <dd class="text-right">{{ tax }}</dd>
-                                </dl>
-                                <dl class="dlist-align">
+                            </dl>
+                            <dl class="dlist-align">
                                 <dt>Total:</dt>
                                 <dd class="text-right text-dark b"><strong>{{ grand_total }}</strong></dd>
-                                </dl>
-                                <hr>
-                                <p class="text-center mb-3">
-                                    <img src="{% static '/images/misc/payments.png' %}" height="26">
-                                </p>
-                                <!-- Place this where you need payment button -->
-                                <button id="payment-button" style="background-color:purple;color: white;" class="btn ml-5">Pay with Khalti</button>
-                                <!-- Place this where you need payment button -->
-                                <!-- Paste this code anywhere in you body tag -->
-                            </div> <!-- card-body.// -->
-                            </div> <!-- card.// -->
-                    
-                        </aside> <!-- col.// -->
-                </div> <!-- row.// -->
-        <!-- ============================ COMPONENT 1 END .// ================================= --> 
+                            </dl>
+                            <hr>
+                            <p class="text-center mb-3">
+                                <img src="{% static '/images/misc/payments.png' %}" height="26">
+                            </p>
+                            <!-- Place this where you need payment button -->
+                            <button id="payment-button" style="background-color:purple;color: white;" class="btn ml-3">
+                                Khalti
+                            </button>
+                            <button id="payment-button" style="background-color:green;color: white;" class="btn ml-2">
+                                Cash In Hand
+                            </button>
+                            <!-- Place this where you need payment button -->
+                            <!-- Paste this code anywhere in you body tag -->
+                        </div> <!-- card-body.// -->
+                    </div> <!-- card.// -->
+
+                </aside> <!-- col.// -->
+            </div> <!-- row.// -->
+            <!-- ============================ COMPONENT 1 END .// ================================= -->
         </div> <!-- container .//  -->
     </section>
     <script>
@@ -122,7 +132,7 @@
             return cookieValue;
         }
 
-        var grand_total  = "{{grand_total}}"
+        var grand_total = "{{grand_total}}"
         var url = "{% url 'payment' %}"
         var csrftoken = getCookie('csrftoken');
         var orderID = "{{order.order_number}}"
@@ -141,38 +151,40 @@
                 "MOBILE_BANKING",
                 "CONNECT_IPS",
                 "SCT",
-                ],
+            ],
             "eventHandler": {
-                onSuccess (payload) {
+                onSuccess(payload) {
                     sendData();
+
                     // to send data to the backend
-                    function sendData(){
+                    function sendData() {
                         fetch(url, {
-                            method : "POST",
-                            headers:{
-                                "Content-type":"application/json",
-                                "X-CSRFToken" : csrftoken,
+                            method: "POST",
+                            headers: {
+                                "Content-type": "application/json",
+                                "X-CSRFToken": csrftoken,
                             },
 
                             body: JSON.stringify({
-                            orderID : orderID,
-                            transID : payload.idx,
-                            payment_method : payment_method,
-                            status : status,
+                                orderID: orderID,
+                                transID: payload.idx,
+                                payment_method: payment_method,
+                                status: status,
                             }),
                         })
                     }
+
                     window.location.href = "{% url 'order_complete' %}"
                 },
-                onError (error) {
+                onError(error) {
                     console.log(error);
                 },
-                onClose () {
+                onClose() {
                     console.log('widget is closing');
                 }
             }
         };
-    
+
         var checkout = new KhaltiCheckout(config);
         var btn = document.getElementById("payment-button");
         btn.onclick = function () {

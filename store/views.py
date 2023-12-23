@@ -142,3 +142,11 @@ def submit_review(request, product_id):
                 data.save()
                 messages.success(request, "Thank you for your Review.")
                 return redirect(url)
+
+def about(request):
+
+    return render(request, 'store/about.html')
+
+def member(request):
+
+    return render(request, 'store/member.html')

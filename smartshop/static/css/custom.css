@@ -38,7 +38,7 @@ label:hover~label {
 
 input:checked+label:hover,
 input:checked~label:hover,
-input:checed~label:hover~label,
+input:checked~label:hover~label,
 label:hover~input:checked~label {
     color: #cc9000;
 }

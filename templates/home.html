@@ -1,142 +1,165 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-{% include 'includes/navbar.html' %}
+    {% include 'includes/navbar.html' %}
 
-<body>
-{#	<!-- ========================= SECTION MAIN ========================= -->#}
-{#	<section class="section-intro padding-y">#}
-{#		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">#}
-{#			<ol class="carousel-indicators">#}
-{#				<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>#}
-{#				<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>#}
-{#				<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>#}
-{#			</ol>#}
-{#			<div class="carousel-inner">#}
-{#				<div class="carousel-item active">#}
-{#					<img class="d-block w-100" src="{% static 'images/banners/1.jpg' %}" alt="First slide">#}
-{#				</div>#}
-{#				<div class="carousel-item">#}
-{#					<img class="d-block w-100" src="{% static 'images/banners/2.jpg' %}" alt="Second slide">#}
-{#				</div>#}
-{#				<div class="carousel-item">#}
-{#					<img class="d-block w-100" src="{% static 'images/banners/3.jpg' %}" alt="Third slide">#}
-{#				</div>#}
-{#			</div>#}
-{#		</div>#}
-{#	</section>#}
-{#	<!-- ========================= SECTION MAIN END// ========================= -->#}
-	{% if offer_products %}
-		<div class="container">
-			<h3>Offers Today</h3>
-			<div class="row">
-				{% for product in offer_products %}
-				{{ product.end_date }}
-				<a href="{{product.get_url}}">
-					<div class="col-md-3">
-						<div class="card-body card-body-cascade">
-							<div class="card-body card-product-grid fa-border">
-								<!-- url chiancha so belwo .url is necessary as it will reutrn the link of the image not the actual image file -->
-								<div class="view view-cascade overlay">
-									<img class="card-img-top" src="{{ product.product.Image.url }}" alt="Card image cap">
-									<a>
-										<div class="mask rgba-white-slight"></div>
-									</a>
-								</div>
-								{{ product.discount_percent }} %
-								<!-- <a href="{{product.get_url}}" class="img-wrap"> <img src="{{ product.Image.url }}"></a> -->
-								<figcaption class="info-wrap">
-									<p class="fw-bolder">{{ product.product.product_name }}</p>
-									{% if product.product.averageRating %}
-									<div class="rating-star">
+    <body>
+
+    <!-- ========================= SECTION MAIN ========================= -->
+    <section class="section-intro padding-y">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner" style="height: 600px;">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="{% static 'images/banners/2.jpg' %}" alt="First slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="{% static 'images/banners/3.jpg' %}" alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="{% static 'images/banners/1.jpg' %}" alt="Third slide">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================= SECTION MAIN END// ========================= -->
+    {% if offer_products %}
+        <div class="container">
+        <h3>Offers Today</h3>
+        <div class="row">
+
+            {% for product in offer_products %}
+                {#                {{ product.end_date }}#}
+                <a href="{{ product.get_url }}">
+                    <div class="col-md-3">
+                        <div class="card-body card-body-cascade">
+                            <div class="card-body card-product-grid fa-border">
+
+                                <div class="view view-cascade overlay">
+                                    <img class="card-img-top" src="{{ product.product.Image.url }}"
+                                         alt="Card image cap">
+                                    <a>
+                                        <div class="mask rgba-white-slight"></div>
+                                    </a>
+                                </div>
+                                <p>{{ product.discount_percent }} %</p>
+                                <!-- <a href="{{product.get_url}}" class="img-wrap"> <img src="{{ product.Image.url }}"></a> -->
+                                <figcaption class="info-wrap">
+                                    <p class="fw-bolder">{{ product.product.product_name }}</p>
+                                    {% if product.product.averageRating %}
+                                        <div class="rating-star">
 										<span>
 											<i class="fa fa-star{% if product.product.averageRating < 0.5 %}-o{% elif product.product.averageRating >= 0.5 and product.product.averageRating < 1 %}-half {% endif %}"
-												aria-hidden="true"></i>
+                                               aria-hidden="true"></i>
 											<i class="fa fa-star{% if product.product.averageRating < 1.5 %}-o{% elif product.product.averageRating >= 1.5 and  product.product.averageRating < 2 %}-half {% endif %}"
-												aria-hidden="true"></i>
+                                               aria-hidden="true"></i>
 											<i class="fa fa-star{% if product.product.averageRating < 2.5 %}-o{% elif product.product.averageRating >= 2.5 and  product.product.averageRating < 3 %}-half {% endif %}"
-												aria-hidden="true"></i>
+                                               aria-hidden="true"></i>
 											<i class="fa fa-star{% if product.product.averageRating < 3.5 %}-o{% elif product.product.averageRating >= 3.5 and  product.product.averageRating < 4 %}-half {% endif %}"
-												aria-hidden="true"></i>
+                                               aria-hidden="true"></i>
 											<i class="fa fa-star{% if product.product.averageRating < 4.5 %}-o{% elif product.product.averageRating >= 4.5 and product.product.averageRating < 5 %}-half {% endif %}"
-												aria-hidden="true"></i>
+                                               aria-hidden="true"></i>
 										</span>
-										<span style="color:gray;">({{product.product.reveiewCount}})</span>
-									</div>
-									{% else %}
-									<p class="text-danger" style="font-size: 12px;">No ratings yet</p>
-									{% endif %}
-									<div class="price mt-1">Rs.</i>
-										{{ product.price_after_discount }}</div> <!-- price-wrap.// -->
-								</figcaption>
-							</div>
-						</div>
+                                            <span style="color:gray;">({{ product.product.reveiewCount }})</span>
+                                        </div>
+                                    {% else %}
+                                        <p class="text-danger" style="font-size: 12px;">No ratings yet</p>
+                                    {% endif %}
+                                    <div class="price mt-1">Rs.</i>
+                                        {{ product.price_after_discount }}</div> <!-- price-wrap.// -->
+                                </figcaption>
+                            </div>
+                        </div>
 
-					</div> <!-- col.// -->
-				</a>
-				{% endfor %}
-		</div>
-	{% endif %}
-	<!-- ========================= SECTION  ========================= -->
-	<section class="section-name padding-y">
-		<div class="container">
+                    </div> <!-- col.// -->
+                </a>
+            {% endfor %}
 
-			<header class="section-heading">
-				<a href="{% url 'store' %}" class="btn btn-outline-success float-right">See all</a>
-				<h3 class="section-title">All products</h3>
-			</header><!-- sect-heading -->
+        </div>
+    {% endif %}
+
+    <!-- Sales Banner -->
+    <div class="container-xxl py-12" style="margin-left: 120px; width: 100%;">
+        <div class="container">
+            <div class="d-flex">
+                <a href="{% url 'store' %}">
+                    <img class="d-block w-100" src="{% static 'images/banners/shopping.jpeg' %}" alt="First slide">
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- End Sales Banner -->
 
 
-			<div class="row">
-				{% for product in products %}
-				<a href="{{product.get_url}}">
-					<div class="col-md-3">
-						<div class="card-body card-body-cascade">
-							<div class="card-body card-product-grid fa-border">
-								<!-- url chiancha so belwo .url is necessary as it will reutrn the link of the image not the actual image file -->
-								<div class="view view-cascade overlay">
-									<img class="card-img-top" src="{{ product.Image.url }}" alt="Card image cap">
-									<a>
-										<div class="mask rgba-white-slight"></div>
-									</a>
-								</div>
-								<!-- <a href="{{product.get_url}}" class="img-wrap"> <img src="{{ product.Image.url }}"></a> -->
-								<figcaption class="info-wrap">
-									<p class="fw-bolder">{{ product.product_name }}</p>
-									{% if product.averageRating %}
-									<div class="rating-star">
+    <!-- ========================= SECTION  ========================= -->
+    <section class="section-name padding-y">
+        <div class="container">
+
+            <header class="section-heading">
+                <a href="{% url 'store' %}" class="btn btn-outline-success float-right">See all</a>
+                <h3 class="section-title">All products</h3>
+            </header><!-- sect-heading -->
+
+
+            <div class="row">
+                {% for product in products %}
+                    <a href="{{ product.get_url }}">
+                        <div class="col-md-3">
+                            <div class="card-body card-body-cascade">
+                                <div class="card-body card-product-grid fa-border">
+                                    <!-- url chiancha so belwo .url is necessary as it will reutrn the link of the image not the actual image file -->
+                                    <div class="view view-cascade overlay">
+                                        <img class="card-img-top" src="{{ product.Image.url }}" alt="Card image cap">
+                                        <a>
+                                            <div class="mask rgba-white-slight"></div>
+                                        </a>
+                                    </div>
+                                    <!-- <a href="{{product.get_url}}" class="img-wrap"> <img src="{{ product.Image.url }}"></a> -->
+                                    <figcaption class="info-wrap">
+                                        <p class="fw-bolder">{{ product.product_name }}</p>
+                                        {% if product.averageRating %}
+                                            <div class="rating-star">
 										<span>
 											<i class="fa fa-star{% if product.averageRating < 0.5 %}-o{% elif product.averageRating >= 0.5 and product.averageRating < 1 %}-half {% endif %}"
-												aria-hidden="true"></i>
+                                               aria-hidden="true"></i>
 											<i class="fa fa-star{% if product.averageRating < 1.5 %}-o{% elif product.averageRating >= 1.5 and  product.averageRating < 2 %}-half {% endif %}"
-												aria-hidden="true"></i>
+                                               aria-hidden="true"></i>
 											<i class="fa fa-star{% if product.averageRating < 2.5 %}-o{% elif product.averageRating >= 2.5 and  product.averageRating < 3 %}-half {% endif %}"
-												aria-hidden="true"></i>
+                                               aria-hidden="true"></i>
 											<i class="fa fa-star{% if product.averageRating < 3.5 %}-o{% elif product.averageRating >= 3.5 and  product.averageRating < 4 %}-half {% endif %}"
-												aria-hidden="true"></i>
+                                               aria-hidden="true"></i>
 											<i class="fa fa-star{% if product.averageRating < 4.5 %}-o{% elif product.averageRating >= 4.5 and product.averageRating < 5 %}-half {% endif %}"
-												aria-hidden="true"></i>
+                                               aria-hidden="true"></i>
 										</span>
-										<span style="color:gray;">({{product.reveiewCount}})</span>
-									</div>
-									{% else %}
-									<p class="text-danger" style="font-size: 12px;">No ratings yet</p>
-									{% endif %}
-									<div class="price mt-1">Rs.</i>
-										{{ product.price }}</div> <!-- price-wrap.// -->
-								</figcaption>
-							</div>
-						</div>
+                                                <span style="color:gray;">({{ product.reveiewCount }})</span>
+                                            </div>
+                                        {% else %}
+                                            <p class="text-danger" style="font-size: 12px;">No ratings yet</p>
+                                        {% endif %}
+                                        <div class="price mt-1">Rs.</i>
+                                            {{ product.price }}</div> <!-- price-wrap.// -->
+                                    </figcaption>
+                                </div>
+                            </div>
 
-					</div> <!-- col.// -->
-				</a>
-				{% endfor %}
-			</div> <!-- row.// -->
+                        </div> <!-- col.// -->
+                    </a>
+                {% endfor %}
+            </div> <!-- row.// -->
 
-		</div><!-- container // -->
-	</section>
-	<!-- ========================= SECTION  END// ========================= -->
-</body>
+        </div><!-- container // -->
 
-</html>
+    </section>
+    </div>
+
+
+    <!-- ========================= SECTION  END// ========================= -->
+    </body>
+
+    </html>
 {% endblock content %}
